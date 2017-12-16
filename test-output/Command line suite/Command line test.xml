@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite hostname="RAJESH-PC" name="com.Scenarios.Login" tests="1" failures="0" timestamp="16 Dec 2017 11:18:58 GMT" time="0.046" errors="0">
+  <testcase name="f" time="0.024" classname="com.Scenarios.Login"/>
+</testsuite>
