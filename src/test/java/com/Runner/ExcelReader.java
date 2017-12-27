@@ -41,6 +41,9 @@ public class ExcelReader {
 				int featurefilecount;
 				testcasename.add(row.getCell(1).toString()); 						
 				featurefilecount = worksheet.getRow(testCaseYCnt+1).getLastCellNum(); // Feature file count in each row of scenario sheet
+				
+				System.out.println("the number of feature file : "+featurefilecount);
+				
 				for( int k=1 ; k<=featurefilecount-2;++k){
 					featurefilename = worksheet.getRow(i).getCell(k+1).toString();
 					if(featurefilename.equals("")){
@@ -107,6 +110,57 @@ public class ExcelReader {
 			}
 //		}
 		return testCaseExecuteRowObject;
+	}
+	public List<Integer> getRowcounttoExecute(XSSFWorkbook workbook){
+		List<Integer> YFlagRow = new ArrayList<Integer>();
+		XSSFSheet worksheet = workbook.getSheetAt(1);
+		int testdata = worksheet.getLastRowNum();			// Test case count from scenario sheet
+     System.out.println("Total number of testData: "+testdata);
+		//		int testCaseYCnt = 0;
+//		List<String> testcasename = new ArrayList<String>() ;	// List of all the executable test cases (Flag 'Y') from scenario sheet
+//		List<String> featurefilelist ;
+//		List<List<String>> featurefilelistOFlist = new ArrayList<List<String>>() ; //Contains all feature files and each entry contains feature file list for a TC 
+		Row row;
+		Cell cell;
+		for(int i=2;i<=testdata;++i){
+			row = worksheet.getRow(i);
+			//featurefilelist = new ArrayList<String>() ;
+			cell = row.getCell(0);
+			if(cell==null)break;
+			if((cell.toString()).equalsIgnoreCase("Y")){
+				//int featurefilecount;
+				System.out.println(i);
+				YFlagRow.add(i);
+			}
+			
+   }
+		return YFlagRow;
+}
+	public HashMap<String,String> getDatamap(XSSFWorkbook workbook,String testCaseListToExecute,String currentFeatureFile,Integer YFlagRow)
+	{
+		HashMap<String,String>hm= new HashMap<String,String>();
+		int worksheetCount = workbook.getSheetIndex(testCaseListToExecute);
+		XSSFSheet currentsheet = workbook.getSheetAt(worksheetCount);
+		//column containing Login
+		int featurefilecount = currentsheet.getLastRowNum();
+		Row row;
+		Cell cell;
+		for(int i=0;i<=featurefilecount;i++)
+		{
+			row = currentsheet.getRow(0);
+			cell = row.getCell(i);
+			if(cell.toString().equalsIgnoreCase(currentFeatureFile))
+			{
+				hm.put(currentsheet.getRow(1).getCell(i).toString(), currentsheet.getRow(YFlagRow).getCell(i).toString());	
+				System.out.println(currentsheet.getRow(1).getCell(i).toString());
+			  System.out.println(currentsheet.getRow(YFlagRow).getCell(i).toString());
+			}
+		}
+	
+		
+	
+		return hm;
+		
 	}
 	
 }
