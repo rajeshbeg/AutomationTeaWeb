@@ -1,14 +1,11 @@
 package com.Scenarios;
-
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
-public class verifyScripName {
-	WebDriver driver;
+public class verifyScripName extends BrowserInitiate{
 	@Test
 	public void g()
 	{
-	 System.out.println(driver.getTitle());
+	 System.out.println("Script verified");
 	}
 
 }

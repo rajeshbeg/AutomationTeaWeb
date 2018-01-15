@@ -1,12 +1,8 @@
 package com.Runner;
-
 import java.util.ArrayList;
-
 import com.Runner.CustomException;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -18,7 +14,7 @@ public class ExcelReader {
 	int testCaseYCnt = 0;
 	List<String> testcasename = new ArrayList<String>() ; // List of all the executable test cases (Flag 'Y') from scenario sheet
 	List<String> featurefilelistTestSheet = null ;					// List of feature files present on individual Test cases sheet
-	List<List<String>> featureFileListOFListTestSheet =  new ArrayList<List<String>>()  ;// List of List of feature files present on all TC sheet with execution flag Y
+	List<List<String>>featureFileListOFListTestSheet =  new ArrayList<List<String>>()  ;// List of List of feature files present on all TC sheet with execution flag Y
 	List<String> featurefilelist ;
 	List<List<String>> featurefilelistOFlist = new ArrayList<List<String>>() ; //Contains all feature files and each entry contains feature file list for a TC 
 

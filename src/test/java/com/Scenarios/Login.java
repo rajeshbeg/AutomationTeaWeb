@@ -7,8 +7,11 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class Login extends BrowserInitiate {
@@ -22,19 +25,20 @@ public class Login extends BrowserInitiate {
 	{
 	driver=setBrowser();
 	driver.get("http://www.moneycontrol.com/");
+	//driver.get("http://www.moneycontrol.com/");
 	}
 	@Test(priority=2)
-	public void Loginclick() throws IOException
+	@Parameters({ "username","password" })
+	public void Loginclick(String username,String password) throws IOException, InterruptedException
 	{
 	driver.findElement(By.xpath("//a[@title='Log In']")).click();
-	//enter user name and password
-	WebElement x = driver.findElement(By.xpath("html/body/div[7]/div/div/div/button"));
-	x.click();
-	driver.findElement(By.xpath("//div[@class='formbox']/div[1]/form/div[1]")).click();
-	driver.findElement(By.xpath("//div[@class='formbox']/div[1]/form/div[1]")).sendKeys("mirjarajesh@gmail.com");
-	driver.findElement(By.xpath("//input[@id='pwd']")).sendKeys("Rajesh@1992");
+	
+	new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@src='https://accounts.moneycontrol.com/mclogin/?d=2']")));
+	driver.findElement(By.xpath("//form[@id='login_form']//input[@class='textfield' and @id='email']")).sendKeys(username);
+	driver.findElement(By.xpath("//form[@id='login_form']//input[@class='textfield' and @id='pwd']")).sendKeys(password);
+	
 	//click on Login 
-	driver.findElement(By.xpath("//button[@onclick='api_call('/login/index/', 'login_form')']")).click();
+	driver.findElement(By.xpath(".//*[@id='submit'][@class='signingraybg btn-lrg-green']")).click();
 	}
 		
 //  @DataProvider

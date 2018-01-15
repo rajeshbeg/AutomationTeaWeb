@@ -6,17 +6,23 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
+import org.testng.xml.XmlClass;
+import org.testng.xml.XmlSuite;
+import org.testng.xml.XmlTest;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.swing.text.Element;
 
 import com.FrameworkCode.FrameworkMethods;
+import com.Scenarios.Login;
 
 public class AutomationRunner {
 	public static void main(String[] args) throws  SecurityException, IllegalArgumentException, IllegalAccessException, CustomException, ClassNotFoundException {
@@ -62,20 +68,34 @@ public class AutomationRunner {
 		        {
 		            System.out.println( dataMap.get( datatoinsert ) );
 		        }
+				String clasname = "com.Scenarios."+currentFeatureFile;
+				Class c2 = Class.forName(clasname);
+				
+				
+				XmlSuite xmlSuite = new XmlSuite();
+		        xmlSuite.setName("Sample_Suite");
+		     //   Map<String, String> dataMap = new ParamContainer().getValues();
+		        xmlSuite.setParameters(dataMap);
+		        XmlTest xmlTest = new XmlTest(xmlSuite);
+		        xmlTest.setName("Sample_test");
+		        xmlTest.setXmlClasses(Collections.singletonList(new XmlClass(c2)));
+		        TestNG tng = new TestNG();
+		        tng.setXmlSuites(Collections.singletonList(xmlSuite));
+		        tng.run();
 				
 				}
 					
 				   
-				   String clasname = "com.Scenarios."+currentFeatureFile;
-					Class c2 = Class.forName(clasname);
-				   
-			TestListenerAdapter tla = new TestListenerAdapter();
-			TestNG testng = new TestNG();
-		//	testng.setTestClasses(new Class[] {com.Scenarios.Login.class });
-			
-			testng.setTestClasses(new Class[] {c2});
-			testng.addListener(tla);
-			testng.run();
+//				   String clasname = "com.Scenarios."+currentFeatureFile;
+//					Class c2 = Class.forName(clasname);
+//				   
+//			TestListenerAdapter tla = new TestListenerAdapter();
+//			TestNG testng = new TestNG();
+//		//	testng.setTestClasses(new Class[] {com.Scenarios.Login.class });
+//			
+//			testng.setTestClasses(new Class[] {c2});
+//			testng.addListener(tla);
+//			testng.run();
 
 				   }
 			   }
