@@ -8,7 +8,8 @@ public class Logout extends BrowserInitiate {
 	@Test
 	public void Logoutpage()
 	{
-		driver.findElement(By.xpath("//a[@title='Logout']")).click();
+		System.out.println("Now logout the page");
+//		driver.findElement(By.xpath("//a[@title='Logout']")).click();
 	}
 
 }

@@ -33,73 +33,74 @@ public class AutomationRunner {
 			XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
 			ExcelReader ex = new ExcelReader();
 			TC tcObject = new TC();
-			
+
 			List<String> testCaseListToExecute = ex.executableTestCase(workbook);
-//			ex.findMissingExecutableScenario();       // Checks if the scenario file and sheets file feature match
-//			String testCaseToExecute = "TC1";
+			//			ex.findMissingExecutableScenario();       // Checks if the scenario file and sheets file feature match
+			//			String testCaseToExecute = "TC1";
 			List<Row> executeCases = ex.getExecutionIterationRows(workbook, testCaseListToExecute.get(0));  // Saves the test case name and execute flag 'Y' count (for each executable case) in a hash map for each TC sheet
 			List<List<String>> featureFileList = ex.executableFeatureFileList(workbook);   // List of all the executable test scenarios with each executable feature file 
-            // get the data whic we have to excute 
+			// get the data whic we have to excute 
 			List<Integer> rowToexecute = ex.getRowcounttoExecute(workbook);
-//			tcObject.createTCObj(executeCases,featureFileList);
-            
-//			   for(List<String> x : featureFileList ){
-//				   for(String y : x ){
-//				   System.out.println(y);				  
+			//			tcObject.createTCObj(executeCases,featureFileList);
+
+			//			   for(List<String> x : featureFileList ){
+			//				   for(String y : x ){
+			//				   System.out.println(y);				  
 			for(List<String> x : featureFileList ){
-				for(String currentFeatureFile : x ){
-				System.out.println(currentFeatureFile);
 				for(Integer YFlagRow : rowToexecute)
 				{
-				HashMap<String,String> dataMap = ex.getDatamap(workbook,testCaseListToExecute.get(0),currentFeatureFile,YFlagRow); 
-		    Set keys = dataMap.keySet();
-			    Iterator itr = keys.iterator();
-			    
-		    String userName;
-			    String value;
-			    
-			    while (itr.hasNext())
-			    {
-			    	userName= (String)itr.next();
-			    	value=(String)dataMap.get(userName);
-			    	System.out.println(userName+ " - " + value);
-			    }
-				for ( String datatoinsert : dataMap.keySet() )
-		        {
-		            System.out.println( dataMap.get( datatoinsert ) );
-		        }
-				String clasname = "com.Scenarios."+currentFeatureFile;
-				Class c2 = Class.forName(clasname);
-				
-				
-				XmlSuite xmlSuite = new XmlSuite();
-		        xmlSuite.setName("Sample_Suite");
-		     //   Map<String, String> dataMap = new ParamContainer().getValues();
-		        xmlSuite.setParameters(dataMap);
-		        XmlTest xmlTest = new XmlTest(xmlSuite);
-		        xmlTest.setName("Sample_test");
-		        xmlTest.setXmlClasses(Collections.singletonList(new XmlClass(c2)));
-		        TestNG tng = new TestNG();
-		        tng.setXmlSuites(Collections.singletonList(xmlSuite));
-		        tng.run();
-				
-				}
+				for(String currentFeatureFile : x ){
+					System.out.println(currentFeatureFile);
 					
-				   
-//				   String clasname = "com.Scenarios."+currentFeatureFile;
-//					Class c2 = Class.forName(clasname);
-//				   
-//			TestListenerAdapter tla = new TestListenerAdapter();
-//			TestNG testng = new TestNG();
-//		//	testng.setTestClasses(new Class[] {com.Scenarios.Login.class });
-//			
-//			testng.setTestClasses(new Class[] {c2});
-//			testng.addListener(tla);
-//			testng.run();
+						HashMap<String,String> dataMap = ex.getDatamap(workbook,testCaseListToExecute.get(0),currentFeatureFile,YFlagRow); 
+						Set keys = dataMap.keySet();
+						Iterator itr = keys.iterator();
 
-				   }
-			   }
-			} 			
+						String userName;
+						String value;
+
+						while (itr.hasNext())
+						{
+							userName= (String)itr.next();
+							value=(String)dataMap.get(userName);
+							System.out.println(userName+ " - " + value);
+						}
+						for ( String datatoinsert : dataMap.keySet() )
+						{
+							System.out.println( dataMap.get( datatoinsert ) );
+						}
+						String clasname = "com.Scenarios."+currentFeatureFile;
+						Class c2 = Class.forName(clasname);
+
+
+						XmlSuite xmlSuite = new XmlSuite();
+						xmlSuite.setName("Sample_Suite");
+						//   Map<String, String> dataMap = new ParamContainer().getValues();
+						xmlSuite.setParameters(dataMap);
+						XmlTest xmlTest = new XmlTest(xmlSuite);
+						xmlTest.setName("Sample_test");
+						xmlTest.setXmlClasses(Collections.singletonList(new XmlClass(c2)));
+						TestNG tng = new TestNG();
+						tng.setXmlSuites(Collections.singletonList(xmlSuite));
+						tng.run();
+
+					}
+
+
+					//				   String clasname = "com.Scenarios."+currentFeatureFile;
+					//					Class c2 = Class.forName(clasname);
+					//				   
+					//			TestListenerAdapter tla = new TestListenerAdapter();
+					//			TestNG testng = new TestNG();
+					//		//	testng.setTestClasses(new Class[] {com.Scenarios.Login.class });
+					//			
+					//			testng.setTestClasses(new Class[] {c2});
+					//			testng.addListener(tla);
+					//			testng.run();
+
+				}
+			}
+		} 			
 
 		catch (IOException  e) {
 			e.printStackTrace();

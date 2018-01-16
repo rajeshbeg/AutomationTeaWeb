@@ -13,35 +13,39 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 public class Login extends BrowserInitiate {
+
+	//	public static Object[][] dataMap = null;
+	//	public Properties pro= null; 
+	WebDriver driver;
 	
-	public static Object[][] dataMap = null;
-	public Properties pro= null; 
-	WebDriver driver; 
-	
+
 	@Test(priority=1)
 	public void setUrl() throws IOException
 	{
-	driver=setBrowser();
-	driver.get("http://www.moneycontrol.com/");
-	//driver.get("http://www.moneycontrol.com/");
+		
+		driver=setBrowser();
+		driver.get("http://www.moneycontrol.com/");
+		//driver.get("http://www.moneycontrol.com/");
 	}
 	@Test(priority=2)
-	@Parameters({ "username","password" })
-	public void Loginclick(String username,String password) throws IOException, InterruptedException
+	@Parameters({ "Username","Password"})
+	public void Loginclick(String Username,String Password) throws IOException, InterruptedException
 	{
-	driver.findElement(By.xpath("//a[@title='Log In']")).click();
-	
-	new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@src='https://accounts.moneycontrol.com/mclogin/?d=2']")));
-	driver.findElement(By.xpath("//form[@id='login_form']//input[@class='textfield' and @id='email']")).sendKeys(username);
-	driver.findElement(By.xpath("//form[@id='login_form']//input[@class='textfield' and @id='pwd']")).sendKeys(password);
-	
-	//click on Login 
-	driver.findElement(By.xpath(".//*[@id='submit'][@class='signingraybg btn-lrg-green']")).click();
-	}
+		Pageobject po= new Pageobject(driver);
 		
-//  @DataProvider
+		po.loginoption().click();
+
+		new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@src='https://accounts.moneycontrol.com/mclogin/?d=2']")));
+		po.username().sendKeys(Username);
+		po.password().sendKeys(Password);
+
+		//click on Login 
+		po.submit().click();
+	}
+
+}
+//@DataProvider
 //  public Object[][]getData()
 //  {  
 ////	  Object[][]data=new Object[2][2];
@@ -54,5 +58,3 @@ public class Login extends BrowserInitiate {
 //return dataMap;
 //	  
 //  }
-  
-}

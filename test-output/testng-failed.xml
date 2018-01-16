@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Sample_Suite]">
-  <parameter name="Flag" value="Yes"/>
+  <parameter name="scripName" value="Log"/>
   <test name="Sample_test(failed)" preserve-order="false">
-    <parameter name="Flag" value="Yes"/>
+    <parameter name="scripName" value="Log"/>
     <classes>
-      <class name="com.Scenarios.Logout">
+      <class name="com.Scenarios.verifyScripName">
         <methods>
-          <include name="Logoutpage"/>
+          <include name="g"/>
         </methods>
       </class>
     </classes>

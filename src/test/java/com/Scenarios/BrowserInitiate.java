@@ -29,7 +29,7 @@ public static WebDriver driver= null;
 	}
 	else if(browser.equals("Firefox"))
 	{
-		System.setProperty("webdriver.gecko.driver"," E:\\AutomationEnvironment\\geckodriver-v0.19.1-win64\\geckodriver.exe");
+//		System.setProperty("webdriver.gecko.driver"," E:\\AutomationEnvironment\\geckodriver-v0.19.1-win64\\geckodriver.exe");
 		driver=new FirefoxDriver();
 	}
 	else if(browser.equals("IE"))
