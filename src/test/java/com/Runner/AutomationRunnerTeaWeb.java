@@ -1,7 +1,5 @@
 package com.Runner;
-
 import java.io.File;
-
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.TestListenerAdapter;
@@ -22,9 +20,7 @@ import java.util.Set;
 import javax.swing.text.Element;
 
 import com.FrameworkCode.FrameworkMethods;
-import com.Scenarios.Login;
-
-public class AutomationRunner {
+public class AutomationRunnerTeaWeb {
 	public static void main(String[] args) throws  SecurityException, IllegalArgumentException, IllegalAccessException, CustomException, ClassNotFoundException {
 		try {
 			String filepath = FrameworkMethods.loadconfigfile(); //gets datasheet path from property file
@@ -47,28 +43,29 @@ public class AutomationRunner {
 			//				   for(String y : x ){
 			//				   System.out.println(y);				  
 			for(List<String> x : featureFileList ){
+				
 				for(Integer YFlagRow : rowToexecute)
 				{
 				for(String currentFeatureFile : x ){
 					System.out.println(currentFeatureFile);
 					
 						HashMap<String,String> dataMap = ex.getDatamap(workbook,testCaseListToExecute.get(0),currentFeatureFile,YFlagRow); 
-						Set keys = dataMap.keySet();
-						Iterator itr = keys.iterator();
+//						Set keys = dataMap.keySet();
+//						Iterator itr = keys.iterator();
 
-						String userName;
-						String value;
-
-						while (itr.hasNext())
-						{
-							userName= (String)itr.next();
-							value=(String)dataMap.get(userName);
-							System.out.println(userName+ " - " + value);
-						}
-						for ( String datatoinsert : dataMap.keySet() )
-						{
-							System.out.println( dataMap.get( datatoinsert ) );
-						}
+//						String userName;
+//						String value;
+//
+//						while (itr.hasNext())
+//						{
+//							userName= (String)itr.next();
+//							value=(String)dataMap.get(userName);
+//							System.out.println(userName+ " - " + value);
+//						}
+//						for ( String datatoinsert : dataMap.keySet() )
+//						{
+//							System.out.println( dataMap.get( datatoinsert ) );
+//						}
 						String clasname = "com.Scenarios."+currentFeatureFile;
 						Class c2 = Class.forName(clasname);
 

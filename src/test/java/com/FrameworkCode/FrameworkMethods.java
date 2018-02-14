@@ -15,7 +15,6 @@ public class FrameworkMethods {
 	public static String configpath = currentdir + "\\src\\test\\resources\\Property Files\\config.properties" ;
 	
 	
-	
 	public static String loadconfigfile(){
 		String featurefilelocation = null;
 		try {

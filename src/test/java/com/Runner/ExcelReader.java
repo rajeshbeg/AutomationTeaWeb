@@ -65,7 +65,7 @@ public class ExcelReader {
 				TestCsSht = workbook.getSheet(testcasename.get(j-1));
 				featurefilelistTestSheet =  new ArrayList<String>()  ;			    // List is reset for each iteration
 				int featurefilecntTstSht = TestCsSht.getRow(0).getLastCellNum();    // Feature file count in each row for particular TC sheet Ex. (TC1)
-				for( int l=0 ; l<=featurefilecntTstSht-1;++l){
+				for( int l=0 ; l<=featurefilecntTstSht-2;++l){
 					featurefilenameTestSheet = TestCsSht.getRow(0).getCell(l+1).toString();
 					if(featurefilenameTestSheet.equals("")){
 						break;    						// If cells have been written over once they will add to the count of feature files
