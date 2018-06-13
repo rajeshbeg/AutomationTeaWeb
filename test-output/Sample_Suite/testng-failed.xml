@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Sample_Suite]">
+  <parameter name="loginfo" value="Report"/>
+  <test name="Sample_test(failed)">
+    <classes>
+      <class name="com.Scenarios.Linkverify">
+        <methods>
+          <include name="linkverify"/>
+          <include name="setupReport"/>
+        </methods>
+      </class> <!-- com.Scenarios.Linkverify -->
+    </classes>
+  </test> <!-- Sample_test(failed) -->
+</suite> <!-- Failed suite [Sample_Suite] -->
