@@ -39,6 +39,7 @@ public class BrowserInitiate {
 		htmlreporter = new ExtentHtmlReporter(System.getProperty("user.dir") +"/test-output/ExtentReport.html");
 		// Existed report appended by this command 
 		htmlreporter.setAppendExisting(true);
+		
 	// New Test will be displaed first
 		
 		

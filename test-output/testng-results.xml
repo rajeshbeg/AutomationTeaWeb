@@ -2,35 +2,20 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Sample_Suite" duration-ms="1617" started-at="2018-02-14T13:40:19Z" finished-at="2018-02-14T13:40:20Z">
+  <suite name="Default suite" duration-ms="13227" started-at="2018-06-07T10:56:28Z" finished-at="2018-06-07T10:56:41Z">
     <groups>
     </groups>
-    <test name="Sample_test" duration-ms="1617" started-at="2018-02-14T13:40:19Z" finished-at="2018-02-14T13:40:20Z">
-      <class name="com.Scenarios.SearchLinkText">
-        <test-method status="PASS" signature="setupReport()[pri:0, instance:com.Scenarios.SearchLinkText@2a066689]" name="setupReport" is-config="true" duration-ms="1609" started-at="2018-02-14T19:10:19Z" finished-at="2018-02-14T19:10:20Z">
+    <test name="Default test" duration-ms="13227" started-at="2018-06-07T10:56:28Z" finished-at="2018-06-07T10:56:41Z">
+      <class name="scenarioTest.CalendarDate">
+        <test-method status="PASS" signature="calendarTest()[pri:0, instance:scenarioTest.CalendarDate@724af044]" name="calendarTest" is-config="true" duration-ms="11631" started-at="2018-06-07T16:26:28Z" finished-at="2018-06-07T16:26:40Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setupReport -->
-        <test-method status="PASS" signature="serchtext()[pri:0, instance:com.Scenarios.SearchLinkText@2a066689]" name="serchtext" duration-ms="2" started-at="2018-02-14T19:10:20Z" finished-at="2018-02-14T19:10:20Z">
+        </test-method> <!-- calendarTest -->
+        <test-method status="PASS" signature="Test1()[pri:0, instance:scenarioTest.CalendarDate@724af044]" name="Test1" duration-ms="1571" started-at="2018-06-07T16:26:40Z" finished-at="2018-06-07T16:26:41Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- serchtext -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.Scenarios.SearchLinkText@2a066689]" name="getResult" is-config="true" duration-ms="1" started-at="2018-02-14T19:10:20Z" finished-at="2018-02-14T19:10:20Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=serchtext status=SUCCESS method=SearchLinkText.serchtext()[pri:0, instance:com.Scenarios.SearchLinkText@2a066689] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="endReport()[pri:0, instance:com.Scenarios.SearchLinkText@2a066689]" name="endReport" is-config="true" duration-ms="1" started-at="2018-02-14T19:10:20Z" finished-at="2018-02-14T19:10:20Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- endReport -->
-      </class> <!-- com.Scenarios.SearchLinkText -->
-    </test> <!-- Sample_test -->
-  </suite> <!-- Sample_Suite -->
+        </test-method> <!-- Test1 -->
+      </class> <!-- scenarioTest.CalendarDate -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>
